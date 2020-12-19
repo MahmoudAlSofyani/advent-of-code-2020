@@ -39,6 +39,8 @@ int main() {
 	}
 
 	// Part two solution
+	// For each element in the array, find two that don't sum to 2020.
+	// Then find an element that when added to the pair sums up to 2020
 	for (int i = 0; i < count; i++) {
 		for (int j = count; j > 0; j--) {
 			if (numArray[i] + numArray[j] == 2020) {
