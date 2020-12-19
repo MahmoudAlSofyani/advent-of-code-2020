@@ -27,12 +27,30 @@ int main() {
 		count++;
 	}
 
+	// Part one solution
 	// For each element in the array, check it against all the other elements if it adds to 2020
 	for (int i = 0; i < count; i++) {
 		for (int j = count; j > 0; j--) {
 			if (numArray[i] + numArray[j] == 2020) {
-				std::cout << numArray[i] * numArray[j] << std::endl;
-				return 0;
+				std::cout << "Part one answer: " <<  numArray[i] * numArray[j] << std::endl;
+				break;
+			}
+		}
+	}
+
+	// Part two solution
+	for (int i = 0; i < count; i++) {
+		for (int j = count; j > 0; j--) {
+			if (numArray[i] + numArray[j] == 2020) {
+				continue;
+			}
+			else {
+				int twoParts = numArray[i] + numArray[j];
+				for (int k = 0; k < count; k++) {
+					if (twoParts + numArray[k] == 2020) {
+						std::cout << "Part two answer: " << numArray[i] * numArray[k] * numArray[j] << std::endl;
+					}
+				}
 			}
 		}
 	}
