@@ -48,8 +48,32 @@ int main() {
 
 	std::cout << "Part one answer: " << validPassword << std::endl;
 
+	inputFile.close();
+	inputFile.open("input.txt", std::ios::in);
 
+	validPassword = 0;
+	std::string firstPosition;
+	std::string secondPosition;
+	bool firstValid = false;
+	bool secondValid = false;
+
+	//Part two
+	// Parse the string same as above
+	// Check positions with policy letter and if they match set their respective position booleans to true
+	//Then check if at most one position is valid, if it is incremement validPassword
+	while (std::getline(inputFile, input)) {
+
+		firstPosition = input.substr(0, input.find('-'));
+		secondPosition = input.substr(input.find('-') + 1, input.find(' ') - 1);
+		policyLetter = input.at(input.find(" ") + 1);
+		password = input.substr(input.find(":") + 2);
+
+		(password[std::stoi(firstPosition) - 1] == policyLetter)  ? firstValid = true : firstValid = false;
+		(password[std::stoi(secondPosition) - 1] == policyLetter) ? secondValid = true : secondValid = false;
+		if (firstValid != secondValid) validPassword++;
+	}
+
+	std::cout << "Part two answer: " << validPassword << std::endl;
 	inputFile.close();
 	return 0;
-
 }
