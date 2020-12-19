@@ -36,14 +36,11 @@ int main() {
 		password = input.substr(input.find(':') + 2);
 
 		for (int i = 0; i < password.length(); i++) {
-			if (password[i] == policyLetter) {
-				policyCounter++;
-			}
+
+			if (password[i] == policyLetter) policyCounter++;
 		}
 
-		if (policyCounter >= std::stoi(lowerLimit) && policyCounter <= std::stoi(upperLimit)) {
-			validPassword++;
-		}
+		if (policyCounter >= std::stoi(lowerLimit) && policyCounter <= std::stoi(upperLimit)) validPassword++;
 	}
 
 	std::cout << "Part one answer: " << validPassword << std::endl;
